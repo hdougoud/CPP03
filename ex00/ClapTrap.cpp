@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 13:24:29 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/10/01 13:29:14 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/10/01 17:11:10 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,39 +46,53 @@ ClapTrap::~ClapTrap()
 
 void	ClapTrap::attack(const std::string &target)
 {
-	if (!this->_hitPoint || !this->_energyPoint)
+	if (CheckEnergyAndHit())
 	{
-		//add string
-		return;
+		std::cout << PURPLE << this->_name << " attack " << target << ", causing " << this->_attackDamage << " points of damage !" << RESET << std::endl;
+		this->_energyPoint -= 1;
+		std::cout << BLUE << "This action took 1 energy point, " << this->_energyPoint << " remaining" << RESET << std::endl;
 	}
-	std::cout << this->_name << " attack " << target << ", causing " << this->_attackDamage << " points of damage !" << std::endl;
-	this->_energyPoint -=1;
-	std::cout << "This action took 1 energy point, " << this->_energyPoint << " remaining" << std::endl;
 }
 
 void	ClapTrap::takeDamage(unsigned int amount)
 {
 	if (!this->_hitPoint)
 	{
-		std::cout << RED << this->_name << " is already dead" << RESET << std::endl;
+		std::cout << RED << this->_name << " is already dead !" << RESET << std::endl;
 		return;
 	}
 	std::cout << RED << this->_name << " took " << amount << " damage points !" << RESET << std::endl;
 	if (amount > this->_hitPoint)
 		amount = this->_hitPoint;
-	std::cout << this->_name << " has " << this->_hitPoint << " hit point remaining" << std::endl;
+	this->_hitPoint -= amount;
+	std::cout << BLUE << this->_name << " has " << this->_hitPoint << " hit point remaining" << RESET << std::endl;
 	if (this->_hitPoint == 0)
 		std::cout << RED << this->_name << " is dead" << RESET << std::endl;
 }
 
 void	ClapTrap::beRepaired(unsigned int amount)
 {
-		
+	if (CheckEnergyAndHit())
+	{
+		this->_energyPoint -= 1;
+		if ((this->_hitPoint + amount) > (unsigned int)MAX_HIT_POINT)
+			amount = (unsigned int)MAX_HIT_POINT - this->_hitPoint;
+		this->_hitPoint += amount;
+		std::cout << GREEN << this->_name << " has been repaired with " << amount << " hit point, " << "actual " << this->_hitPoint << RESET << std::endl;
+		std::cout << BLUE << "This action took 1 energy point, " << this->_energyPoint << " remaining" << RESET << std::endl;
+	}
+}
+
+
+bool	ClapTrap::CheckEnergyAndHit(void)
+{
 	if (!this->_hitPoint || !this->_energyPoint)
 	{
-		//add string
-		return ;
+		if (!this->_hitPoint)
+			std::cout << RED << "Impossible action, " << this->_name << " is dead" << RESET << std::endl;
+		else if (!this->_energyPoint)
+			std::cout << YELLOW << this->_name << " have no more energy !" << RESET << std::endl;
+		return (false);
 	}
-	std::cout << GREEN << this->_name << " has been repaired by " << amount << " point !" << RESET << std::endl;
-	this->_energyPoint =-1;
+	return (true);
 }
