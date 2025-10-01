@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 13:24:31 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/09/30 13:45:18 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/10/01 13:30:45 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,25 @@
 
 #include <iostream>
 
+#define RED		"\033[1;31m"
+#define GREEN	"\033[1:32m"
+#define RESET	"\033[0m"
+
 class ClapTrap
 {
 	public:
-		ClapTrap();
+		ClapTrap(std::string name);
 		ClapTrap(const ClapTrap &src);
 		ClapTrap operator=(const ClapTrap &src);
 		~ClapTrap();
-		void attack(const std::string& target);
+		void attack(const std::string &target);
 		void beRepaired(unsigned int amount);
 		void takeDamage(unsigned int amount);
 	private:
-		int	_hitPoint;
-		int	_energyPoint;
-		int	_attackDamage;
+		std::string		_name;
+		unsigned int	_hitPoint;
+		unsigned int	_energyPoint;
+		unsigned int	_attackDamage;
 };
 
 #endif
