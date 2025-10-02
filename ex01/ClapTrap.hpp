@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 13:24:31 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/10/01 17:53:07 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/10/02 12:10:00 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 #define BLUE			"\033[1;34m"
 #define PURPLE			"\033[1;35m"
 #define RESET			"\033[0m"
-#define MAX_HIT_POINT	100
+#define MAX_HIT_POINT	200
 class ClapTrap
 {
 	public:
@@ -32,7 +32,8 @@ class ClapTrap
 		void 			attack(const std::string &target);
 		void 			beRepaired(unsigned int amount);
 		void 			takeDamage(unsigned int amount);
-	private:
+		unsigned int	getAttackDamage(void);
+	protected:
 		std::string		_name;
 		unsigned int	_hitPoint;
 		unsigned int	_energyPoint;

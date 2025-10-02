@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 13:24:29 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/10/01 17:11:10 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/10/02 12:10:52 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 ClapTrap::ClapTrap(std::string name) : _name(name), _hitPoint(10), _energyPoint(10), _attackDamage(0)
 {
-	std::cout << "ClapTrap : Default constructor called" << std::endl;
+	std::cout << "ClapTrap : Constructor called" << std::endl;
 	return ;
 }
 
@@ -25,7 +25,7 @@ ClapTrap::ClapTrap(const ClapTrap &src) : _name(src._name), _hitPoint(src._hitPo
 	return ;
 }
 
-ClapTrap ClapTrap::operator=(const ClapTrap &src)
+ClapTrap &ClapTrap::operator=(const ClapTrap &src)
 {
 	if (this != &src)
 	{
@@ -82,7 +82,6 @@ void	ClapTrap::beRepaired(unsigned int amount)
 		std::cout << BLUE << "This action took 1 energy point, " << this->_energyPoint << " remaining" << RESET << std::endl;
 	}
 }
-
 
 bool	ClapTrap::CheckEnergyAndHit(void)
 {

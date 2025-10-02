@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 13:24:29 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/10/01 17:11:10 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/10/02 12:11:28 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ ClapTrap::ClapTrap(const ClapTrap &src) : _name(src._name), _hitPoint(src._hitPo
 	return ;
 }
 
-ClapTrap ClapTrap::operator=(const ClapTrap &src)
+ClapTrap &ClapTrap::operator=(const ClapTrap &src)
 {
 	if (this != &src)
 	{
@@ -48,7 +48,7 @@ void	ClapTrap::attack(const std::string &target)
 {
 	if (CheckEnergyAndHit())
 	{
-		std::cout << PURPLE << this->_name << " attack " << target << ", causing " << this->_attackDamage << " points of damage !" << RESET << std::endl;
+		std::cout << PURPLE << "ClapTrap Unit " << this->_name << " attack " << target << ", causing " << this->_attackDamage << " points of damage !" << RESET << std::endl;
 		this->_energyPoint -= 1;
 		std::cout << BLUE << "This action took 1 energy point, " << this->_energyPoint << " remaining" << RESET << std::endl;
 	}
@@ -83,6 +83,10 @@ void	ClapTrap::beRepaired(unsigned int amount)
 	}
 }
 
+unsigned int	ClapTrap::getAttackDamage(void)
+{
+	return (this->_attackDamage);
+}
 
 bool	ClapTrap::CheckEnergyAndHit(void)
 {
