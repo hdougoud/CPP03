@@ -6,9 +6,12 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 17:15:56 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/10/02 12:10:05 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/10/02 13:50:22 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#ifndef FRAGTRAP_HPP
+# define FRAGTRAP_HPP
 
 #include <iostream>
 #include "ClapTrap.hpp"
@@ -23,3 +26,5 @@ class ScavTrap : public ClapTrap
 		void	attack(const std::string &target);
 		void	guardGate(void);
 };
+
+#endif
