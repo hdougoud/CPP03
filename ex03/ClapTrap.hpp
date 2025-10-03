@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 13:24:31 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/10/02 13:50:14 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/10/03 15:37:15 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 class ClapTrap
 {
 	public:
+		ClapTrap();
 		ClapTrap(std::string name);
 		ClapTrap(const ClapTrap &src);
 		ClapTrap &operator=(const ClapTrap &src);

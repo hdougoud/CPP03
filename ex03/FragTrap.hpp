@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 13:32:12 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/10/02 17:43:18 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/10/03 15:44:31 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 class FragTrap : virtual public ClapTrap
 {
 	public:
+		FragTrap();
 		FragTrap(std::string name);
 		FragTrap(const FragTrap &src);
 		FragTrap &operator=(const FragTrap &src);

@@ -6,11 +6,16 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/02 15:00:39 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/10/02 18:08:25 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/10/03 15:48:38 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "DiamondTrap.hpp"
+
+DiamondTrap::DiamondTrap() : ClapTrap("Default_clap_name"), _name("Default")
+{
+	return ;
+}
 
 DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name + "_clap_name"), FragTrap(name), ScavTrap(name), _name(name)
 {
@@ -50,9 +55,4 @@ DiamondTrap::~DiamondTrap()
 void DiamondTrap::whoAmI(void)
 {
 	std::cout << BLUE << "I am " << this->_name << " and " << ClapTrap::_name << RESET << std::endl;
-}
-
-void DiamondTrap::attack(const std::string &target)
-{
-	ScavTrap::attack(target);
 }

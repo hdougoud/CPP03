@@ -6,15 +6,21 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 13:24:29 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/10/02 12:10:52 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/10/03 15:40:30 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 
+ClapTrap::ClapTrap() : _name("Default"), _hitPoint(10), _energyPoint(10), _attackDamage(0)
+{
+	std::cout << "ClapTrap : Default constructor called" << std::endl;
+	return;
+}
+
 ClapTrap::ClapTrap(std::string name) : _name(name), _hitPoint(10), _energyPoint(10), _attackDamage(0)
 {
-	std::cout << "ClapTrap : Constructor called" << std::endl;
+	std::cout << "ClapTrap : Ordinary constructor called" << std::endl;
 	return ;
 }
 
@@ -48,7 +54,7 @@ void	ClapTrap::attack(const std::string &target)
 {
 	if (CheckEnergyAndHit())
 	{
-		std::cout << PURPLE << this->_name << " attack " << target << ", causing " << this->_attackDamage << " points of damage !" << RESET << std::endl;
+		std::cout << PURPLE << "ClapTrap Unit " << this->_name << " attack " << target << ", causing " << this->_attackDamage << " points of damage !" << RESET << std::endl;
 		this->_energyPoint -= 1;
 		std::cout << BLUE << "This action took 1 energy point, " << this->_energyPoint << " remaining" << RESET << std::endl;
 	}
@@ -81,6 +87,11 @@ void	ClapTrap::beRepaired(unsigned int amount)
 		std::cout << GREEN << this->_name << " has been repaired with " << amount << " hit point, " << "actual " << this->_hitPoint << RESET << std::endl;
 		std::cout << BLUE << "This action took 1 energy point, " << this->_energyPoint << " remaining" << RESET << std::endl;
 	}
+}
+
+unsigned int	ClapTrap::getAttackDamage(void)
+{
+	return (this->_attackDamage);
 }
 
 bool	ClapTrap::CheckEnergyAndHit(void)

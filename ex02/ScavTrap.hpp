@@ -6,7 +6,7 @@
 /*   By: hdougoud <hdougoud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 17:15:56 by hdougoud          #+#    #+#             */
-/*   Updated: 2025/10/02 14:26:42 by hdougoud         ###   ########.fr       */
+/*   Updated: 2025/10/03 15:43:30 by hdougoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 class ScavTrap : public ClapTrap
 {
 	public:
+		ScavTrap();
 		ScavTrap(std::string name);
 		ScavTrap(const ScavTrap &src);
 		ScavTrap &operator=(const ScavTrap &src);
